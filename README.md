@@ -1,4 +1,4 @@
-# 🆔 Google Sheets QR CCCD Processor (V2)
+# 🆔 Google Sheets QR CCCD
 
 Giải pháp tự động hóa toàn diện giúp thu thập, giải mã và quản lý dữ liệu Căn cước công dân (CCCD) từ **Google Forms** vào **Google Sheets**. Hệ thống tích hợp xử lý ảnh thông minh qua API và cơ chế tự động dọn dẹp để bảo mật dữ liệu tuyệt đối.
 
