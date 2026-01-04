@@ -77,4 +77,4 @@ Hệ thống yêu cầu một API nhận file ảnh và trả về JSON theo đ�
 ```
 
 ## ⚖️ Giấy phép
-Dự án được cấp phép theo **MIT License**. Copyright (c) 2026.
+Dự án được cấp phép theo [MIT License](LICENSE). Copyright (c) 2026 **hoafd**.
