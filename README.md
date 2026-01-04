@@ -67,4 +67,4 @@ Tận dụng tính năng Tự động xóa: Hãy luôn kích hoạt tính năng 
 ---
 
 ## ⚖️ Giấy phép
-Dự án phát hành dưới giấy phép **MIT License**. Bản quyền (c) 2026 **hoafd**.
+Dự án được cấp phép theo [MIT License](LICENSE). Copyright (c) 2026 **hoafd**.
