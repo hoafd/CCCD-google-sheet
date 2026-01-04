@@ -66,5 +66,17 @@ Tận dụng tính năng Tự động xóa: Hãy luôn kích hoạt tính năng 
 
 ---
 
+## ☕ Support my work
+
+If you find this project helpful, please consider supporting me to maintain the server and develop more free tools:
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-orange?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white)](https://www.buymeacoffee.com/hoa0290303s)
+
+---
+
+## ⚖️ License
+This project is licensed under the [MIT License](LICENSE). Copyright (c) 2026 **hoafd**.
+
+---
 ## ⚖️ Giấy phép
 Dự án được cấp phép theo [MIT License](LICENSE). Copyright (c) 2026 **hoafd**.
