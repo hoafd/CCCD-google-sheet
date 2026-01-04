@@ -1,6 +1,6 @@
 /**
- * SCRIPT GIẢI MÃ QR CCCD - PHIÊN BẢN V2 (LINH HOẠT THEO KÝ TỰ CỘT)
- * GitHub: https://github.com/hoafd/google-sheets-qr-cccd
+ * SCRIPT GIẢI MÃ QR CCCD - (LINH HOẠT THEO KÝ TỰ CỘT)
+ * GitHub: https://github.com/hoafd/CCCD-google-sheet/
  */
 
 // --- CẤU HÌNH HỆ THỐNG ---
