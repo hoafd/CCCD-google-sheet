@@ -74,3 +74,7 @@ Hệ thống yêu cầu một API nhận file ảnh và trả về JSON theo đ�
   "status": "success",
   "data": "Số CCCD|Số CMND cũ|Họ tên|Ngày sinh|Giới tính|Địa chỉ|Ngày cấp"
 }
+```
+
+## ⚖️ Giấy phép
+Dự án được cấp phép theo **MIT License**. Copyright (c) 2026.
