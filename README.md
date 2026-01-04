@@ -1,80 +1,70 @@
 # 🆔 Google Sheets QR CCCD
 
-Giải pháp tự động hóa toàn diện giúp thu thập, giải mã và quản lý dữ liệu Căn cước công dân (CCCD) từ **Google Forms** vào **Google Sheets**. Hệ thống tích hợp xử lý ảnh thông minh qua API và cơ chế tự động dọn dẹp để bảo mật dữ liệu tuyệt đối.
-
-
+Giải pháp tự động hóa giúp thu thập, giải mã và quản lý dữ liệu Căn cước công dân (CCCD) từ **Google Forms** vào **Google Sheets**. Hệ thống tích hợp xử lý ảnh qua API và cơ chế tự động dọn dẹp bảo mật.
 
 ---
 
 ## 🌟 Tính năng nổi bật
 
-* **Giải mã QR tự động:** Trích xuất tức thời các thông tin từ mã QR CCCD: *Số ID, Họ tên, Ngày sinh, Giới tính, Địa chỉ, Ngày cấp...*
-* **Cấu hình linh hoạt (Column Letters):** Cho phép thiết lập vị trí các cột dữ liệu bằng chữ cái (`A`, `B`, `C`...) thay vì đếm số thứ tự thủ công. Script tự động chuyển đổi chữ cái sang số thứ tự tương ứng.
-* **Bảo mật & Quyền riêng tư:** Tự động chuyển tệp ảnh vào Thùng rác (Trash) ngay sau khi xử lý thành công hoặc theo lịch trình hàng tuần để tiết kiệm dung lượng Drive và bảo vệ thông tin cá nhân.
-* **Hỗ trợ đa API:** Dễ dàng tùy chỉnh Endpoint API để sử dụng server riêng (như dự án **`qr-api`**) hoặc các dịch vụ giải mã QR của bên thứ ba.
+* **Giải mã QR tự động:** Trích xuất Số ID, Họ tên, Ngày sinh, Giới tính, Địa chỉ, Ngày cấp... ngay khi nộp Form.
+* **Cấu hình chữ cái cột:** Thiết lập vị trí cột bằng chữ cái (`A`, `B`, `C`...) cực kỳ tiện lợi.
+* **Bảo mật tuyệt đối:** Tự động chuyển ảnh vào Thùng rác sau khi xử lý hoặc theo lịch hàng tuần.
+* **Linh hoạt API:** Hỗ trợ server riêng (dự án `qr-api`) hoặc các dịch vụ bên thứ ba.
 
 ---
 
-## 🛠️ Hướng dẫn cài đặt chi tiết
+## 🛠️ Hướng dẫn cài đặt
 
-### Bước 1: Chuẩn bị Google Form & Sheet
-1. Tạo một **Google Form** với câu hỏi dạng **Tải tệp lên** (File Upload) để người dùng gửi ảnh CCCD.
-2. Kết nối Form với một **Google Sheet** để nhận phản hồi.
-3. Xác định **ID thư mục** lưu ảnh trên Google Drive (Lấy từ chuỗi ký tự cuối cùng trong URL của thư mục trên Drive).
+### Bước 1: Chuẩn bị
+1. Tạo **Google Form** dạng "Tải tệp lên" để nhận ảnh CCCD.
+2. Mở Sheet nhận phản hồi, xác định **ID thư mục** lưu ảnh trên Drive.
 
-### Bước 2: Thiết lập Google Apps Script
-1. Trong Google Sheet, chọn **Extensions** (Tiện ích mở rộng) -> **Apps Script**.
-2. Xóa toàn bộ mã hiện có và dán nội dung file **`Code.gs`** (nằm trong kho lưu trữ này).
-3. Cập nhật phần **`CONFIG`** ở đầu script:
-   * `API_URL`: Địa chỉ API giải mã QR của bạn.
-   * `FOLDER_ID`: ID thư mục lưu ảnh đã chuẩn bị ở Bước 1.
-   * `QR_IMAGE_COL`: Chữ cái cột chứa link ảnh (VD: `"G"`).
-   * `INFO_START_COL`: Chữ cái cột bắt đầu ghi thông tin giải mã (VD: `"H"`).
-   * `STATUS_COL`: Cột ghi trạng thái xử lý (VD: `"O"`).
+### Bước 2: Cài đặt Apps Script
+1. Trong Sheet, vào **Extensions** -> **Apps Script**.
+2. Dán nội dung file `Code.gs` vào trình soạn thảo.
+3. Cập nhật phần `CONFIG` ở đầu mã nguồn (URL API, ID Thư mục, Chữ cái cột).
 
-### Bước 3: Cài đặt Trình kích hoạt (Trigger)
-Để hệ thống tự vận hành mỗi khi có người nộp Form:
-1. Tại giao diện Apps Script, nhấn vào biểu tượng **Triggers** (hình đồng hồ ⏰).
-2. Nhấn **Add Trigger** (Thêm trình kích hoạt).
-3. Thiết lập các thông số:
-   * Chọn hàm: `autoReadQRCode`.
-   * Chọn nguồn sự kiện: **From spreadsheet**.
-   * Chọn loại sự kiện: **On form submit**.
-4. Nhấn **Save** và phê duyệt quyền truy cập cho script.
+### Bước 3: Cài đặt Trigger
+1. Nhấn vào biểu tượng **Triggers** (⏰).
+2. Chọn hàm: `autoReadQRCode` | Event: **On form submit**.
 
 ---
 
-[!TIP] Khuyên dùng: Sử dụng dự án qr-api chạy trên VPS cá nhân của bạn để đảm bảo tốc độ xử lý và bảo mật dữ liệu cao nhất.
-https://github.com/hoafd/qr-api
+## 📋 Danh sách API giải mã QR đề xuất
 
-🩺 Kiểm tra & Bảo trì
-Menu hệ thống: Sau khi làm mới Google Sheet, một menu mới 🚀 QUẢN LÝ CCCD sẽ xuất hiện. Tại đây bạn có thể:
+| Dịch vụ | URL API | Ghi chú |
+| :--- | :--- | :--- |
+| **Dự án của Hoa FD `qr-api`** | `https://github.com/hoafd/qr-api` | **Khuyên dùng** (Bảo mật nhất) |
+| **GoQR.me** | `https://api.qrserver.com/v1/read-qr-code/` | Miễn phí (Dễ lỗi Unicode) |
+| **Google Vision** | `https://vision.googleapis.com/v1/images:annotate` | Trả phí (Độ chính xác tuyệt đối) |
 
-🗑️ Xóa sạch ảnh ngay bây giờ: Dọn dẹp thủ công thư mục ảnh.
+---
 
-📅 Cài đặt lịch xóa hàng tuần: Tự động dọn dẹp vào 0h Thứ Hai hàng tuần.
+🔐 Lưu ý quan trọng về Bảo mật (Security)
+Dữ liệu Căn cước công dân là thông tin cực kỳ nhạy cảm. Khi sử dụng script này, hãy tuân thủ các nguyên tắc sau:
 
-Log lỗi: Nếu dữ liệu không được điền, hãy kiểm tra cột Trạng thái (O) để xem phản hồi chi tiết từ API hoặc lỗi hệ thống.
+Hạn chế API bên thứ ba: Tránh gửi ảnh CCCD qua các API miễn phí không rõ nguồn gốc.
+
+Khóa quyền truy cập Script: Chỉ cho phép những email quản trị có quyền truy cập vào Apps Script và bảng tính.
+
+Tận dụng tính năng Tự động xóa: Hãy luôn kích hoạt tính năng 📅 Cài đặt lịch xóa hàng tuần có sẵn trong menu để đảm bảo ảnh không tồn tại vĩnh viễn trên Drive.
 
 ---
 
 ## 📂 Cấu trúc mã nguồn
 
-* **`Code.gs`**: Chứa toàn bộ logic xử lý, hàm chuyển đổi ký tự cột sang số và các hàm tương tác API.
-* **`appsscript.json`**: File cấu hình môi trường và quyền truy cập (Scopes) của Google Apps Script.
+* **`Code.gs`**: Logic xử lý chính và hàm chuyển đổi cột.
+* **`appsscript.json`**: Cấu hình môi trường Google Apps Script.
 
 ---
 
-## 📋 API Endpoint (Đề xuất)
+## 🩺 Xử lý lỗi (Troubleshooting)
 
-Hệ thống yêu cầu một API nhận file ảnh và trả về JSON theo định dạng chuẩn:
+1. **Lỗi font chữ:** Đảm bảo API trả về định dạng UTF-8 (Tiếng Việt).
+2. **Script không chạy:** Kiểm tra xem đã cấp quyền cho Trigger chưa.
+3. **Cột bị lệch:** Kiểm tra lại ký tự cột trong `CONFIG` đã khớp với Sheet thực tế chưa.
 
-```json
-{
-  "status": "success",
-  "data": "Số CCCD|Số CMND cũ|Họ tên|Ngày sinh|Giới tính|Địa chỉ|Ngày cấp"
-}
-```
+---
 
 ## ⚖️ Giấy phép
-Dự án được cấp phép theo [MIT License](LICENSE). Copyright (c) 2026 **hoafd**.
+Dự án phát hành dưới giấy phép **MIT License**. Bản quyền (c) 2026 **hoafd**.
